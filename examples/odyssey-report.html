@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>奥德赛计划 · 李维</title>
+<style>
+:root {
+  --ink: #1d1e22;
+  --sub: #6a6a72;
+  --line: #e3e2dd;
+  --paper: #f6f5f2;
+  --card: #ffffff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 48px 24px 72px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 880px; margin: 0 auto; }
+header.top { border-bottom: 2px solid var(--ink); padding-bottom: 20px; margin-bottom: 40px; }
+.kicker { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--sub); }
+h1 { font-family: "Songti SC", Georgia, "Times New Roman", serif;
+     font-size: 34px; font-weight: 600; margin: 10px 0 8px; letter-spacing: -.01em; }
+.meta { font-size: 13px; color: var(--sub); }
+h2 { font-family: "Songti SC", Georgia, serif; font-size: 20px; font-weight: 600;
+     margin: 44px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+h3 { font-size: 15px; font-weight: 600; margin: 0 0 4px; }
+p { margin: 0 0 12px; }
+.quote { background: #fff; border-left: 3px solid var(--line); padding: 14px 18px;
+         color: #35363c; margin: 0 0 10px; }
+.quote .lab { display: block; font-size: 11px; letter-spacing: .12em; color: var(--sub);
+              text-transform: uppercase; margin-bottom: 4px; }
+.dash { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.dash .item { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+.dash .num { font-size: 24px; font-weight: 600; line-height: 1.2; }
+.dash .lbl { font-size: 12px; color: var(--sub); }
+.bar { height: 4px; background: #ededea; border-radius: 2px; margin-top: 8px; overflow: hidden; }
+.bar > i { display: block; height: 100%; background: #8d8b84; border-radius: 2px; }
+.gravity { margin: 0; padding-left: 18px; color: #44454b; }
+.gravity li { margin-bottom: 4px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+        padding: 22px 24px; margin-bottom: 18px; }
+.card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .06em;
+       color: #fff; padding: 2px 8px; border-radius: 4px; vertical-align: 2px; margin-right: 8px; }
+.total { font-family: Georgia, serif; font-size: 26px; font-weight: 600; }
+.verdict { font-size: 12px; color: var(--sub); margin-left: 8px; }
+.headline { color: #3c3d43; font-size: 14px; margin: 6px 0 16px; }
+.split { display: grid; grid-template-columns: 240px 1fr; gap: 20px; align-items: center; }
+.scores { display: flex; flex-direction: column; gap: 9px; }
+.srow { display: grid; grid-template-columns: 56px 1fr 28px; gap: 10px; align-items: center; font-size: 13px; }
+.srow .track { height: 6px; background: #eeedea; border-radius: 3px; overflow: hidden; }
+.srow .track > i { display: block; height: 100%; border-radius: 3px; }
+.srow .v { text-align: right; font-variant-numeric: tabular-nums; color: var(--sub); }
+.reason { font-size: 12px; color: var(--sub); margin-top: 2px; }
+.scores .reason { margin: -4px 0 2px 66px; }
+.tl { list-style: none; margin: 4px 0 0; padding: 0; }
+.tl li { display: grid; grid-template-columns: 46px 1fr; gap: 12px;
+         padding-bottom: 12px; font-size: 13.5px; }
+.tl li .y { font-size: 11px; color: var(--sub); padding-top: 3px; white-space: nowrap; }
+.mini { font-size: 12px; color: var(--sub); letter-spacing: .1em; text-transform: uppercase;
+        margin: 16px 0 4px; }
+.proto { font-size: 13.5px; margin: 0 0 6px; padding-left: 14px; position: relative; }
+.proto:before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px;
+                border-radius: 50%; background: var(--ink); opacity: .35; }
+.flag { font-size: 13px; color: #8a4526; margin: 0 0 4px; }
+.flag:before { content: "→ "; }
+.next { background: #1d1e22; color: #f4f3ef; border-radius: 12px; padding: 22px 24px; }
+.next h2 { color: #fff; border-color: rgba(255,255,255,.18); margin-top: 0; }
+.next .order { font-family: Georgia, serif; font-size: 22px; margin-bottom: 12px; }
+.next li { color: #d9d8d3; font-size: 13.5px; }
+.next .action { margin-top: 14px; font-size: 14px; color: #fff; }
+.warn { font-size: 12.5px; color: var(--sub); margin-top: 10px; }
+footer { margin-top: 48px; font-size: 12px; color: var(--sub); border-top: 1px solid var(--line); padding-top: 14px; }
+@media (max-width: 680px) {
+  body { padding: 28px 16px 48px; }
+  .split { grid-template-columns: 1fr; }
+  .dash { grid-template-columns: repeat(2, 1fr); }
+  h1 { font-size: 26px; }
+}
+@media print {
+  body { background: #fff; padding: 0; font-size: 11.5pt; }
+  .card, .dash .item { break-inside: avoid; }
+  .next { background: #fff; color: var(--ink); border: 1px solid var(--ink); }
+  .next h2 { color: var(--ink); }
+  .next li, .next .action { color: var(--ink); }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="kicker">Odyssey Plan / 五年三版本对照</div><h1>李维 的奥德赛计划</h1><div class="meta">2026-11-25　·　模式 interview　·　三个版本、四个维度、一个先做</div></header>
+<h2>现状四仪表</h2>
+<div class="dash"><div class="item"><div class="num">62</div><div class="lbl">健康</div><div class="bar"><i style="width:62%"></i></div></div><div class="item"><div class="num">55</div><div class="lbl">工作</div><div class="bar"><i style="width:55%"></i></div></div><div class="item"><div class="num">30</div><div class="lbl">娱乐</div><div class="bar"><i style="width:30%"></i></div></div><div class="item"><div class="num">70</div><div class="lbl">爱</div><div class="bar"><i style="width:70%"></i></div></div></div>
+<h2>重力清单（不解决，只当围墙）</h2><ul class="gravity"><li>两个孩子在上小学，三年内不能离开这座城市</li><li>38 岁重新读全日制学位，时间成本接受不了</li></ul><h2>判断标尺</h2><div class="quote"><span class="lab">工作观</span>工作是换取自主权的手段，同时得做出点别人真用得上的东西。只换钱不产出的工作，我做不下去。</div><div class="quote"><span class="lab">人生观</span>好生活是早上醒来不抗拒，有几段不必表演的关系，一周里有一两天是自己的。</div><h2>三个五年版本</h2>
+<section class="card"><div class="card-head"><h3><span class="tag" style="background:#A6542F">B</span>企业培训师</h3><div><span class="total">3.55</span><span class="verdict">值得原型</span></div></div><p class="headline">把这十年带团队的方法拆成课，卖给中小企业的销售团队，先兼职做。</p><div class="split"><div><svg viewBox="0 0 240 212" width="100%" height="200" role="img" aria-label="四维雷达图"><polygon points="118.0,86.8 131.2,100.0 118.0,113.2 104.8,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.55"/><polygon points="118.0,73.6 144.4,100.0 118.0,126.4 91.6,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.55"/><polygon points="118.0,60.4 157.6,100.0 118.0,139.6 78.4,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.55"/><polygon points="118.0,47.2 170.8,100.0 118.0,152.8 65.2,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.55"/><polygon points="118.0,34.0 184.0,100.0 118.0,166.0 52.0,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.9"/><line x1="118.0" y1="100.0" x2="118.0" y2="34.0" stroke="#dcdbd5" stroke-width="0.8"/><line x1="118.0" y1="100.0" x2="184.0" y2="100.0" stroke="#dcdbd5" stroke-width="0.8"/><line x1="118.0" y1="100.0" x2="118.0" y2="166.0" stroke="#dcdbd5" stroke-width="0.8"/><line x1="118.0" y1="100.0" x2="52.0" y2="100.0" stroke="#dcdbd5" stroke-width="0.8"/><polygon points="118.0,60.4 170.8,100.0 118.0,139.6 65.2,100.0" fill="#A6542F" fill-opacity="0.16" stroke="#A6542F" stroke-width="1.8" stroke-linejoin="round"/><circle cx="118.0" cy="60.4" r="2.6" fill="#A6542F"/><circle cx="170.8" cy="100.0" r="2.6" fill="#A6542F"/><circle cx="118.0" cy="139.6" r="2.6" fill="#A6542F"/><circle cx="65.2" cy="100.0" r="2.6" fill="#A6542F"/><text x="118" y="24" text-anchor="middle" font-size="10.5" fill="#6a6a72" font-family="-apple-system, PingFang SC, sans-serif">资源</text><text x="192" y="104" text-anchor="start" font-size="10.5" fill="#6a6a72" font-family="-apple-system, PingFang SC, sans-serif">喜爱度</text><text x="118" y="186" text-anchor="middle" font-size="10.5" fill="#6a6a72" font-family="-apple-system, PingFang SC, sans-serif">自信度</text><text x="44" y="104" text-anchor="end" font-size="10.5" fill="#6a6a72" font-family="-apple-system, PingFang SC, sans-serif">一致性</text></svg></div><div class="scores"><div class="srow"><div>资源</div><div class="track"><i style="width:60%;background:#A6542F"></i></div><div class="v">3</div></div><div class="reason">有真实案例和口碑，但没有课程产品、没有渠道、没有个人品牌</div><div class="srow"><div>喜爱度</div><div class="track"><i style="width:80%;background:#A6542F"></i></div><div class="v">4</div></div><div class="reason">内部带新人时最有劲，讲完看到别人当场会用，那种感觉现在只有这时候有</div><div class="srow"><div>自信度</div><div class="track"><i style="width:60%;background:#A6542F"></i></div><div class="v">3</div></div><div class="reason">讲是能讲，但没卖过课，不知道企业和个人客户差别多大</div><div class="srow"><div>一致性</div><div class="track"><i style="width:80%;background:#A6542F"></i></div><div class="v">4</div></div><div class="reason">直接对上&#x27;做出别人用得上的东西&#x27;，也不需要离开这座城市</div></div></div><div class="mini">五年轨线</div><ul class="tl"><li><span class="y">第 1 年</span><span>用周末做出一门 4 小时的新人带教课，先免费讲三场换反馈</span></li><li><span class="y">第 3 年</span><span>稳定每月两场付费内训，收入补到工资的三成</span></li><li><span class="y">第 5 年</span><span>两条腿走路：白天主业或半职，外部培训做成一门可复购的产品</span></li></ul><div class="mini">还没想清</div><p class="reason">我的方法是不是只在我这家公司成立；真到了要卖的时候，我拉不下脸报价</p><div class="mini">原型实验</div><p class="proto"><b>体验</b>　给一家相熟的小公司免费讲一次 2 小时，现场录音，事后收三份书面反馈<br><span class="reason">找谁：供应商老陈的团队，12 人　·　何时：下周三晚上　·　要拿到：内容能不能离开我的行业语境还成立，学员真正记住的是哪一段</span></p><p class="proto"><b>对话</b>　找两位独立培训师问报价、获客、退单率<br><span class="reason">找谁：行业群认识的两位自由讲师　·　何时：两周内　·　要拿到：这行的真实收入曲线和最难的一年</span></p></section><section class="card"><div class="card-head"><h3><span class="tag" style="background:#4A7A5C">C</span>社区书店与读书会</h3><div><span class="total">3.45</span><span class="verdict">先补短板</span></div></div><p class="headline">在住的小区开一家 40 平米的小书店，靠读书会和选书活着。</p><div class="split"><div><svg viewBox="0 0 240 212" width="100%" height="200" role="img" aria-label="四维雷达图"><polygon points="118.0,86.8 131.2,100.0 118.0,113.2 104.8,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.55"/><polygon points="118.0,73.6 144.4,100.0 118.0,126.4 91.6,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.55"/><polygon points="118.0,60.4 157.6,100.0 118.0,139.6 78.4,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.55"/><polygon points="118.0,47.2 170.8,100.0 118.0,152.8 65.2,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.55"/><polygon points="118.0,34.0 184.0,100.0 118.0,166.0 52.0,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.9"/><line x1="118.0" y1="100.0" x2="118.0" y2="34.0" stroke="#dcdbd5" stroke-width="0.8"/><line x1="118.0" y1="100.0" x2="184.0" y2="100.0" stroke="#dcdbd5" stroke-width="0.8"/><line x1="118.0" y1="100.0" x2="118.0" y2="166.0" stroke="#dcdbd5" stroke-width="0.8"/><line x1="118.0" y1="100.0" x2="52.0" y2="100.0" stroke="#dcdbd5" stroke-width="0.8"/><polygon points="118.0,73.6 184.0,100.0 118.0,126.4 65.2,100.0" fill="#4A7A5C" fill-opacity="0.16" stroke="#4A7A5C" stroke-width="1.8" stroke-linejoin="round"/><circle cx="118.0" cy="73.6" r="2.6" fill="#4A7A5C"/><circle cx="184.0" cy="100.0" r="2.6" fill="#4A7A5C"/><circle cx="118.0" cy="126.4" r="2.6" fill="#4A7A5C"/><circle cx="65.2" cy="100.0" r="2.6" fill="#4A7A5C"/><text x="118" y="24" text-anchor="middle" font-size="10.5" fill="#6a6a72" font-family="-apple-system, PingFang SC, sans-serif">资源</text><text x="192" y="104" text-anchor="start" font-size="10.5" fill="#6a6a72" font-family="-apple-system, PingFang SC, sans-serif">喜爱度</text><text x="118" y="186" text-anchor="middle" font-size="10.5" fill="#6a6a72" font-family="-apple-system, PingFang SC, sans-serif">自信度</text><text x="44" y="104" text-anchor="end" font-size="10.5" fill="#6a6a72" font-family="-apple-system, PingFang SC, sans-serif">一致性</text></svg></div><div class="scores"><div class="srow"><div>资源</div><div class="track"><i style="width:40%;background:#4A7A5C"></i></div><div class="v">2</div></div><div class="reason">有一点积蓄但不够房租加装修，没有零售经验，也没做过社群运营</div><div class="srow"><div>喜爱度</div><div class="track"><i style="width:100%;background:#4A7A5C"></i></div><div class="v">5</div></div><div class="reason">想到周二下午在店里理书、晚上跟十来个人聊一本书，这是我唯一会主动熬夜想的事</div><div class="srow"><div>自信度</div><div class="track"><i style="width:40%;background:#4A7A5C"></i></div><div class="v">2</div></div><div class="reason">完全不知道怎么算坪效、怎么选品，赔钱的样子我能想象得很清楚</div><div class="srow"><div>一致性</div><div class="track"><i style="width:80%;background:#4A7A5C"></i></div><div class="v">4</div></div><div class="reason">对得上&#x27;一周有一两天是自己的&#x27;，也是对得上&#x27;做别人用得上的东西&#x27;</div></div></div><div class="mini">五年轨线</div><ul class="tl"><li><span class="y">第 1 年</span><span>先在社区做 12 场免费读书会，攒 100 个真实认识的人</span></li><li><span class="y">第 3 年</span><span>试一间 20 平米的快闪店，跑通选书和活动的现金流</span></li><li><span class="y">第 5 年</span><span>一家 40 平米的小店 + 稳定会员制，我一半时间在店里</span></li></ul><div class="mini">还没想清</div><p class="reason">这是不是只是我对&#x27;慢生活&#x27;的想象；如果它变成生意，我还会喜欢吗</p><div class="mini">原型实验</div><p class="proto"><b>沉浸</b>　在朋友的咖啡馆包一个角落，连做四场读书会，每场收 30 元<br><span class="reason">找谁：小区里已有的妈妈群和同事群　·　何时：本月内做完第一场　·　要拿到：我到底喜欢的是读书，还是喜欢有人听我说话</span></p><div class="mini">提示</div><p class="flag">资源、自信度低于 3 分，是这条路的结构性短板</p><p class="flag">想做但不敢：优先找原型对话，而不是先补课</p></section><section class="card"><div class="card-head"><h3><span class="tag" style="background:#4C6E8F">A</span>区域总监线</h3><div><span class="total">3.15</span><span class="verdict">暂缓</span></div></div><p class="headline">把现在这条销售管理路走到底，五年做到区域负责人，用位置换自主权。</p><div class="split"><div><svg viewBox="0 0 240 212" width="100%" height="200" role="img" aria-label="四维雷达图"><polygon points="118.0,86.8 131.2,100.0 118.0,113.2 104.8,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.55"/><polygon points="118.0,73.6 144.4,100.0 118.0,126.4 91.6,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.55"/><polygon points="118.0,60.4 157.6,100.0 118.0,139.6 78.4,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.55"/><polygon points="118.0,47.2 170.8,100.0 118.0,152.8 65.2,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.55"/><polygon points="118.0,34.0 184.0,100.0 118.0,166.0 52.0,100.0" fill="none" stroke="#dcdbd5" stroke-width="0.8" opacity="0.9"/><line x1="118.0" y1="100.0" x2="118.0" y2="34.0" stroke="#dcdbd5" stroke-width="0.8"/><line x1="118.0" y1="100.0" x2="184.0" y2="100.0" stroke="#dcdbd5" stroke-width="0.8"/><line x1="118.0" y1="100.0" x2="118.0" y2="166.0" stroke="#dcdbd5" stroke-width="0.8"/><line x1="118.0" y1="100.0" x2="52.0" y2="100.0" stroke="#dcdbd5" stroke-width="0.8"/><polygon points="118.0,34.0 144.4,100.0 118.0,152.8 91.6,100.0" fill="#4C6E8F" fill-opacity="0.16" stroke="#4C6E8F" stroke-width="1.8" stroke-linejoin="round"/><circle cx="118.0" cy="34.0" r="2.6" fill="#4C6E8F"/><circle cx="144.4" cy="100.0" r="2.6" fill="#4C6E8F"/><circle cx="118.0" cy="152.8" r="2.6" fill="#4C6E8F"/><circle cx="91.6" cy="100.0" r="2.6" fill="#4C6E8F"/><text x="118" y="24" text-anchor="middle" font-size="10.5" fill="#6a6a72" font-family="-apple-system, PingFang SC, sans-serif">资源</text><text x="192" y="104" text-anchor="start" font-size="10.5" fill="#6a6a72" font-family="-apple-system, PingFang SC, sans-serif">喜爱度</text><text x="118" y="186" text-anchor="middle" font-size="10.5" fill="#6a6a72" font-family="-apple-system, PingFang SC, sans-serif">自信度</text><text x="44" y="104" text-anchor="end" font-size="10.5" fill="#6a6a72" font-family="-apple-system, PingFang SC, sans-serif">一致性</text></svg></div><div class="scores"><div class="srow"><div>资源</div><div class="track"><i style="width:100%;background:#4C6E8F"></i></div><div class="v">5</div></div><div class="reason">客户和团队都在手上，公司内部晋升路径清晰，老板明确提过</div><div class="srow"><div>喜爱度</div><div class="track"><i style="width:40%;background:#4C6E8F"></i></div><div class="v">2</div></div><div class="reason">现在八成时间在开会、追报表、处理人事，过程本身没有一件是我期待的</div><div class="srow"><div>自信度</div><div class="track"><i style="width:80%;background:#4C6E8F"></i></div><div class="v">4</div></div><div class="reason">已经带过两个团队，去年超额完成，这条路我会走</div><div class="srow"><div>一致性</div><div class="track"><i style="width:40%;background:#4C6E8F"></i></div><div class="v">2</div></div><div class="reason">和&#x27;做出别人用得上的东西&#x27;基本无关，越往上离产品越远</div></div></div><div class="mini">五年轨线</div><ul class="tl"><li><span class="y">第 1 年</span><span>接下一个省的盘子，把数字化工具的短板补上</span></li><li><span class="y">第 3 年</span><span>带 40 人以上团队，跑通两个新区域，开始做预算和人事决策</span></li><li><span class="y">第 5 年</span><span>区域负责人，日程以会议、出差、跨部门博弈为主，一线判断基本交出去</span></li></ul><div class="mini">还没想清</div><p class="reason">第五年那种日程我能不能忍满一年；离开一线之后，我还会不会做判断，还是只会做汇报</p><div class="mini">原型实验</div><p class="proto"><b>对话</b>　找两个现任区域负责人聊他们真实的一周，问清最难受的三件事<br><span class="reason">找谁：前同事张、行业群里的王　·　何时：本周五前约到，下周内聊完　·　要拿到：这个岗位到底还剩下多少一线判断，还是纯管理博弈</span></p><div class="mini">提示</div><p class="flag">喜爱度、一致性低于 3 分，是这条路的结构性短板</p><p class="flag">喜爱度不足：过程本身不成立，靠意志力撑不过三年</p><p class="flag">资源高而喜爱度低：典型沉没成本陷阱，资源不等于热爱</p><p class="flag">与自述的工作观/人生观冲突，需要显式处理这个矛盾</p></section><section class="next"><h2>结论</h2><div class="order">B 企业培训师 → C 社区书店与读书会 → A 区域总监线</div><ul><li>C 版喜爱度最高而资源最低，结构健康：说明渴望找到了，下一步是移植而不是转行</li></ul><div class="action"><b>下一步</b>　先给「企业培训师」（3.55 分）做原型：给一家相熟的小公司免费讲一次 2 小时，现场录音，事后收三份书面反馈</div></section>
+<footer>方法源自斯坦福人生设计课（Designing Your Life）的奥德赛计划，此处只实现其流程与评分骨架，未引用原书文本。分数由本人给出，本报告不含判断。</footer>
+</div>
+</body>
+</html>

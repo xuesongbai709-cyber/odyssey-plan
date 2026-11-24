@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+._*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# 本地跑出来的文件（只忽略根目录，examples/ 里的示例要提交）
+/my-plan.json
+/plan.json
+/result.json
+/score.md
+/odyssey-report.html
+
+# 编辑器
+.vscode/
+.idea/
